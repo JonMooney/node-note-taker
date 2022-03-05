@@ -35,6 +35,8 @@ The Note Taker application allows you to easily add and remove notes, with data 
 - Click on the + icon to add a new note
 - Click on the trash icon to delete a note
 
+View the live application @ [https://note-taker-40559.herokuapp.com](https://note-taker-40559.herokuapp.com)
+
 ### Screenshot
 
 ![Screenshot of CLI](./assets/images/screen.jpg)
