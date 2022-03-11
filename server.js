@@ -15,6 +15,9 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static('public'));
 
+// API Routes
+
+// Display all notes
 app.get('/api/notes', (req, res) => {
     fs.readFile('./db/db.json', (err, data) => {
         if (err) {
@@ -27,6 +30,7 @@ app.get('/api/notes', (req, res) => {
     });
 });
 
+// Submit a new note
 app.post('/api/notes', (req, res) => {
     const id = uuid();
     const {title, text} = req.body;
@@ -72,6 +76,7 @@ app.post('/api/notes', (req, res) => {
     }
 });
 
+// Delete a note by ID
 app.delete('/api/notes/:id', (req, res) => {
     const id = req.params.id;
     
@@ -102,15 +107,19 @@ app.delete('/api/notes/:id', (req, res) => {
 
 });
 
+// HTML Routes
+
+// Display main HTML page at root path
 app.get('/', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/index.html'))
 );
 
-
+// Display Notes HTML page
 app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
 
+// Fallback - Display main index.html page no matter what URL is entered.
 app.get('*', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/index.html'))
 );
